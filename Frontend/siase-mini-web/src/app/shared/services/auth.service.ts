@@ -17,7 +17,7 @@ export class AuthService {
     return this.storageService.getItem(GeneralConstant.TOKEN_KEY);
   }
 
-  public saveToken(token: string) {
+  public setToken(token: string) {
     this.storageService.setItem(GeneralConstant.TOKEN_KEY, token);
   }
 
