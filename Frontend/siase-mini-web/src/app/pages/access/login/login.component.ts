@@ -8,6 +8,9 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
+import { StorageService } from '../../../shared/services/storage.service';
+import { LoginResponse } from '../../../shared/dto/login/login-response.interface';
+import { GeneralConstant } from '../../../shared/general-constant';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +35,8 @@ export class LoginComponent {
     private userService: UserService,
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private storageService: StorageService
   ) {
     this.loginForm = this.fb.group({
       user: ['', [Validators.required]],
@@ -54,7 +58,8 @@ export class LoginComponent {
   authenticateUser(loginRequest: LoginRequest) {
     this.userService.authenticateUser(loginRequest).subscribe({
       next: (data) => {
-        this.authService.setToken(data.token);
+        this.saveUserToken(data.token);
+        this.saveUserData(data);
       },
       error: (error) => {
         this.isLoading = false;
@@ -68,5 +73,13 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       }
     });
+  }
+
+  saveUserToken(token: string){
+    this.authService.setToken(token);
+  }
+
+  saveUserData(loginResponse: LoginResponse){
+    this.storageService.setItem(GeneralConstant.USER_DATA_KEY, loginResponse)
   }
 }

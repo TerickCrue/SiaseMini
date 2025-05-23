@@ -22,6 +22,7 @@ export class AuthService {
   }
 
   public logout(reroute: boolean = true) {
+    this.storageService.removeItem(GeneralConstant.USER_DATA_KEY);
     this.storageService.removeItem(GeneralConstant.TOKEN_KEY);
 
     if(reroute){
