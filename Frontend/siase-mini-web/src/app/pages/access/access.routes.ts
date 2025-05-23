@@ -1,11 +1,11 @@
 import { Route, Routes } from '@angular/router';
-import { AccessComponent } from './access/access.component';
 import { LoginComponent } from './login/login.component';
 
 export default [
     {
         path: '',
-        component: AccessComponent
+        redirectTo: 'login',
+        pathMatch: 'full'
     },
     {
         path: 'login',
@@ -13,7 +13,7 @@ export default [
     },
     {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
 ] as Route[];

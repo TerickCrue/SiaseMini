@@ -8,6 +8,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import Lara from '@primeng/themes/lara';
 
 import { DialogService } from 'primeng/dynamicdialog';
+import { AuthGuard } from './shared/auth/auth-guard.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,9 +20,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Lara
+        preset: Lara,
+        options: {
+          darkModeSelector: false || 'none'
+        }
       }
     }),
     DialogService,
+    AuthGuard
   ]
 };
