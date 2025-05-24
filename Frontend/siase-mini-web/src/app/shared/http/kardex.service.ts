@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Kardex } from '../dto/kardex/kardex.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class KardexService {
 
   constructor(private http: HttpClient) { }
 
-  getCareerKardex(careerIndex: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/${careerIndex}`);
+  getCareerKardex(careerIndex: number): Observable<Kardex> {
+    return this.http.get<Kardex>(`${this.baseUrl}/${careerIndex}`);
   }
 } 
