@@ -1,0 +1,28 @@
+:root {
+  // Tipografías
+  --font-display: "Gayathri", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  // Paleta de colores Neutral
+  --neutral-50: #ffffff;
+  --neutral-100: #f4f4f4;
+  --neutral-200: #dcdcdc;
+  --neutral-300: #bdbdbd;
+  --neutral-400: #989898;
+  --neutral-500: #7c7c7c;
+  --neutral-600: #656565;
+  --neutral-700: #525252;
+  --neutral-800: #464646;
+  --neutral-900: #292929;
+  --neutral-950: #000000;
+
+  // Paleta de colores Error
+  --error-100: #f9dedc;
+  --error-200: #b3261e;
+  --error-300: #410e0b;
+
+  // Paleta de colores Success
+  --success-100: #EEF9DC;
+  --success-200: #98C450;
+  --success-300: #304807;
+}
