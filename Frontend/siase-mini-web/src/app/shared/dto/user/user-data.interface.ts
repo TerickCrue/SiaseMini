@@ -1,6 +1,6 @@
 import { Career} from '../career/career.interface';
 
-export interface LoginResponse {
+export interface UserData {
     nombre: string;
     matricula: string;
     carreras: Career[];
