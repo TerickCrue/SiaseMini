@@ -1,0 +1,26 @@
+
+.career-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 1rem;
+
+  .career-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+
+.career-details {
+  padding: 1rem 0;
+}
+
+.career-info {
+  margin-bottom: 2rem;
+
+  p {
+    margin: 0.5rem 0;
+    color: var(--text-color-secondary);
+  }
+}

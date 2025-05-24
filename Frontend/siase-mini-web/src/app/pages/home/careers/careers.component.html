@@ -1,1 +1,38 @@
-<p>careers works!</p>
+<section id="careers-container">
+  <p-card>
+    <ng-template #title> 
+        <h2>Mis Carreras</h2> 
+    </ng-template>
+    <p-accordion>
+      <p-accordion-panel
+        *ngFor="let career of careers; let i = index"
+        [value]="i"
+      >
+        <p-accordion-header>{{ career.nombre }}</p-accordion-header>
+        <p-accordion-content>
+          <div class="career-details">
+            <div class="career-info">
+            <p><strong>Matrícula:</strong> {{ career.careerDetail?.matricula }}</p>
+              <p><strong>Dependencia:</strong> {{ career.claveDependencia }}</p>
+              <p><strong>Unidad:</strong> {{ career.claveUnidad }}</p>
+              <p>
+                <strong>Nivel Académico:</strong>
+                {{ career.claveNivelAcademico }}
+              </p>
+              <p>
+                <strong>Grado Académico:</strong>
+                {{ career.claveGradoAcademico }}
+              </p>
+              <p><strong>Modalidad:</strong> {{ career.claveModalidad }}</p>
+              <p>
+                <strong>Plan de Estudios:</strong>
+                {{ career.clavePlanEstudios }} - {{career.careerDetail?.planEstudios}}
+              </p>
+              <p><strong>Carrera:</strong> {{ career.claveCarrera }} - {{career.careerDetail?.carrera}}</p>
+            </div>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </p-card>
+</section>
