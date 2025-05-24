@@ -1,1 +1,31 @@
-<p>kardex works!</p>
+<section id="kardex-container">
+  <p-card>
+    <ng-template #title>
+      <h2>Kardex</h2>
+    </ng-template>
+    <div id="kardex">
+      <p-table [value]="kardex.materias" [tableStyle]="{ 'min-width': '60rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Semestre</th>
+            <th>Clave</th>
+            <th>Nombre</th>
+            <th *ngFor="let col of opportunityColumns">
+              Op. {{ col }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td>{{ row.semestreMateria }}</td>
+            <td>{{ row.claveMateria }}</td>
+            <td>{{ row.nombre }}</td>
+            <td *ngFor="let col of opportunityColumns">
+              {{ row.oportunidades[col - 1] || "-" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</section>
