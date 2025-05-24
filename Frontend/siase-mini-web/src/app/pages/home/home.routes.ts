@@ -33,7 +33,7 @@ export default [
       },
       {
         path: 'afis',
-        loadComponent: () => import('./afis/afis.component').then((c) => c.AfisComponent),
+        loadChildren: () => import('./afis/afis.routes')
       },
       {
         path: '**',
