@@ -1,5 +1,9 @@
 <div class="main-container">
-    <div id="form-container">
+    <section id="message-container">
+        <h2>Bienvenido a SIASE Mini</h2>
+        <h3>Solamente con las funciones que más utilizas a diario</h3>
+    </section>
+    <section id="form-container">
         <form [formGroup]="loginForm" (ngSubmit)="enviarFormulario()">
             <div class="form-field">
                 <label for="user">Usuario</label>
@@ -14,5 +18,5 @@
                 <p-button type="submit" label="Iniciar Sesión" [disabled]="!loginForm.valid || isLoading || btnSubmit"></p-button>
             </div>
         </form>
-    </div>
+    </section>
 </div>
