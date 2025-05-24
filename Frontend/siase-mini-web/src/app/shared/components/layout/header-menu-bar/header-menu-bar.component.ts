@@ -9,11 +9,11 @@ import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
-import { PopoverModule } from 'primeng/popover';
 import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { Career } from '../../../dto/career/career.interface';
 import { DrawerModule } from 'primeng/drawer';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-header-menu-bar',
@@ -24,19 +24,19 @@ import { DrawerModule } from 'primeng/drawer';
     MenubarModule,
     ButtonModule,
     AvatarModule,
-    PopoverModule,
     SelectModule,
-    DrawerModule
+    DrawerModule,
+    DividerModule
   ],
   templateUrl: './header-menu-bar.component.html',
   styleUrl: './header-menu-bar.component.scss',
 })
 export class HeaderMenuBarComponent {
   menuItems: MenuItem[] = [
-    {
-      label: 'Inicio',
-      routerLink: '/home/dashboard',
-    },
+    // {
+    //   label: 'Inicio',
+    //   routerLink: '/home/dashboard',
+    // },
     {
       label: 'Carreras',
       routerLink: '/home/careers',

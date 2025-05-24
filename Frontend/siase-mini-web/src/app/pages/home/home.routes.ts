@@ -8,13 +8,13 @@ export default [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'careers',
         pathMatch: 'full'
       },
-      {
-        path: 'dashboard',
-        loadComponent: () => import('./dashboard/dashboard.component').then((c) => c.DashboardComponent),
-      },
+      // {
+      //   path: 'dashboard',
+      //   loadComponent: () => import('./dashboard/dashboard.component').then((c) => c.DashboardComponent),
+      // },
       {
         path: 'careers',
         loadComponent: () => import('./careers/careers.component').then((c) => c.CareersComponent),
@@ -27,17 +27,17 @@ export default [
         path: 'kardex',
         loadComponent: () => import('./kardex/kardex.component').then((c) => c.KardexComponent),
       },
-      {
-        path: 'grades',
-        loadComponent: () => import('./grades/grades.component').then((c) => c.GradesComponent),
-      },
+      // {
+      //   path: 'grades',
+      //   loadComponent: () => import('./grades/grades.component').then((c) => c.GradesComponent),
+      // },
       {
         path: 'afis',
         loadChildren: () => import('./afis/afis.routes')
       },
       {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'careers',
         pathMatch: 'full',
       },
     ],
