@@ -1,1 +1,55 @@
-<p>history works!</p>
+<section id="afi-history-container">
+  <p-card>
+    <ng-template #title>
+      <h2>Mis AFIs</h2>
+    </ng-template>
+    <p-table
+      [value]="afiHistory.afis"
+      [paginator]="true"
+      [rows]="5"
+      [rowsPerPageOptions]="[5, 10, 15]"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      showGridlines
+      stripedRows
+    >
+      <ng-template #header>
+        <tr>
+          <th>Área</th>
+          <th>Evento</th>
+          <th>Fecha</th>
+          <th>Periodo</th>
+          <th>Asistencia</th>
+          <th>Oficial</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-afi>
+        <tr [ngClass]="rowClass(afi)">
+          <td>{{ afi.area }}</td>
+          <td>{{ afi.evento }}</td>
+          <td>{{ afi.fechaInicio }}</td>
+          <td>{{ afi.periodoEscolar }} - {{ afi.fechaFin }}</td>
+          <td>
+            <span
+              [ngClass]="{
+                'text-green': afi.asistencia,
+                'text-red': !afi.asistencia
+              }"
+            >
+              {{ afi.asistencia ? "Sí" : "No" }}
+            </span>
+          </td>
+          <td>
+            <span
+              [ngClass]="{
+                'text-green': afi.eventoOficial,
+                'text-red': !afi.eventoOficial
+              }"
+            >
+              {{ afi.eventoOficial ? "Sí" : "No" }}
+            </span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</section>
