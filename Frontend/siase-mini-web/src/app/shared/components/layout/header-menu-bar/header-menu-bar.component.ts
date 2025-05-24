@@ -49,10 +49,10 @@ export class HeaderMenuBarComponent {
       label: 'Kardex',
       routerLink: '/home/kardex',
     },
-    {
-      label: 'Calificaciones',
-      routerLink: '/home/grades',
-    },
+    // {
+    //   label: 'Calificaciones',
+    //   routerLink: '/home/grades',
+    // },
     {
       label: 'AFIs',
       items: [
