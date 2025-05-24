@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { GeneralConstant } from '../general-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class StorageService {
 
   // Limpiar todo el localStorage
   clear(): void {
-    localStorage.clear();
+    localStorage.removeItem(GeneralConstant.USER_DATA_KEY);
+    localStorage.removeItem(GeneralConstant.USER_SELECTED_CAREER_KEY);
   }
 }
