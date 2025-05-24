@@ -1,0 +1,42 @@
+    <p-menubar [model]="menuItems">
+        <ng-template #end>
+            <div id="end">
+                <p-button 
+                    severity="secondary" 
+                    size="small" icon="pi pi-cog" 
+                    iconPos="right" 
+                    (click)="toggleSettingsDrawer()">
+                </p-button>
+                <p-avatar id="user-img" size="normal" [image]="userData.foto" shape="circle" />
+            </div>
+        </ng-template>
+    </p-menubar>
+    <p-drawer [(visible)]="isSettingsVisible" [closable]="false" position="right">
+        <ng-template #header>
+            <div class="header-container">
+                <p-avatar id="user-img" size="xlarge" [image]="userData.foto" shape="square" />
+                <div id="main-info">
+                    <p>{{userData.nombre}}</p>
+                    <p>{{userData.matricula}}</p>
+                </div>
+            </div>
+        </ng-template>
+        <p-select
+            [options]="userData.carreras"
+            [(ngModel)]="selectedCareer" 
+            (ngModelChange)="onCareerChange()"
+            optionLabel="nombre" 
+            placeholder="Selecciona una carrera"
+            size="small" 
+            fluid
+        >
+        <ng-template let-option #item>
+            <div style="white-space: normal;">
+                {{option.nombre}}
+            </div>
+        </ng-template>
+        </p-select>
+        <ng-template #footer>
+            <p-button label="Cerrar sesión" icon="pi pi-sign-out" severity="danger" text fluid (click)="logout()"></p-button>
+        </ng-template>
+    </p-drawer>

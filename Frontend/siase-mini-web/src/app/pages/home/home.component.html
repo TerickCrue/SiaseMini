@@ -1,13 +1,6 @@
 <header>
   <nav>
-    <p-menubar [model]="menuItems">
-        <ng-template #end>
-            <div id="end">
-                <p-button label="Cerrar Sesión" icon="pi pi-sign-out" iconPos="right" (onClick)="logout()"></p-button>
-                <p-avatar id="user-img" size="large" [image]="userImg" shape="circle" />
-            </div>
-        </ng-template>
-    </p-menubar>
+    <app-header-menu-bar></app-header-menu-bar>
   </nav>
 </header>
 
