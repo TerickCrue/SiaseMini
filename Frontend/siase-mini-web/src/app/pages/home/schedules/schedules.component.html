@@ -1,1 +1,25 @@
-<p>schedules works!</p>
+<section id="schedules-container">
+    <p-card>
+        <ng-template #title>
+            <div class="card-header">
+                <h2>Mis Horarios</h2> 
+                <p-select 
+                    [options]="careerPeriods" 
+                    [(ngModel)]="selectedPeriod" 
+                    (ngModelChange)="onPeriodChange()"
+                    optionLabel="nombre" 
+                    placeholder="Selecciona un semestre"
+                    size="small" 
+                    [style]="{'max-width': '50%'}"
+                >
+                    <ng-template let-option #item>
+                        <div style="white-space: normal;">
+                            {{option.nombre}}
+                        </div>
+                    </ng-template>
+                </p-select>
+            </div>
+        </ng-template>
+        <app-schedule [schedule]="schedule"></app-schedule>
+    </p-card>
+</section>
