@@ -2,12 +2,13 @@
         <ng-template #end>
             <div id="end">
                 <p-button 
+                    [ariaLabel]="'configuration'"
                     severity="secondary" 
                     size="small" icon="pi pi-cog" 
                     iconPos="right" 
                     (click)="toggleSettingsDrawer()">
                 </p-button>
-                <p-avatar id="user-img" size="normal" [image]="userData.foto" shape="circle" />
+                <p-avatar ariaLabel="user-avatar" id="user-img" size="normal" [image]="userData.foto" shape="circle" />
             </div>
         </ng-template>
     </p-menubar>
