@@ -8,6 +8,7 @@ import { KardexService } from '../../../shared/http/kardex.service';
 import { GeneralConstant } from '../../../shared/general-constant';
 import { Kardex } from '../../../shared/dto/kardex/kardex.interface';
 import { KardexSubject } from '../../../shared/dto/kardex/kardex-subject.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-kardex',
@@ -16,8 +17,16 @@ import { KardexSubject } from '../../../shared/dto/kardex/kardex-subject.interfa
   styleUrl: './kardex.component.scss'
 })
 export class KardexComponent implements OnInit {
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
-  protected kardex!: Kardex;
+  protected kardex: Kardex = {
+    carrera: "",
+    materias: [],
+    nombreAlumno: "",
+    planEstudios: ""
+  };
+  
   protected rows: KardexSubject[] = [];
   protected opportunityColumns = [1, 2, 3, 4, 5, 6] as const;
 
@@ -33,10 +42,15 @@ export class KardexComponent implements OnInit {
   }
 
   protected loadKardex(){
+    this.loadingSubject.next(true);
+
     const selectedCareer = this.storageService.getItem(GeneralConstant.USER_SELECTED_CAREER_KEY) ?? 0;
     this.kardexService.getCareerKardex(selectedCareer).subscribe({
       next: (data) => {
         this.kardex = data;
+      },
+      complete: () => {
+        this.loadingSubject.next(false);
       }
     })
   }

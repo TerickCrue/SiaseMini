@@ -10,6 +10,7 @@ import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CalendarAfi } from '../../../../shared/dto/afi/calendar-afi.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -18,6 +19,8 @@ import { CalendarAfi } from '../../../../shared/dto/afi/calendar-afi.interface';
   styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent implements OnInit {
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
   private selectedCareer!: number;
   protected monthSelector = getMonths();
@@ -38,6 +41,8 @@ export class CalendarComponent implements OnInit {
   }
 
   private loadAfiCalendar(month: number){
+    this.loadingSubject.next(true);
+
     this.afiService.getCareerAfis(this.selectedCareer, month).subscribe({
       next: (data) => {
         this.afis = data;
@@ -46,6 +51,7 @@ export class CalendarComponent implements OnInit {
       complete: () => {
         this.areaSelector = getValoresUnicos(this.afis, 'area');
         this.organizadorSelector = getValoresUnicos(this.afis, 'organizador');
+        this.loadingSubject.next(false);
       }
     })
   }

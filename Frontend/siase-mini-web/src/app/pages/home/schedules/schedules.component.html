@@ -20,6 +20,6 @@
                 </p-select>
             </div>
         </ng-template>
-        <app-schedule [schedule]="schedule"></app-schedule>
+        <app-schedule [loading]="loading$ | async" [schedule]="schedule"></app-schedule>
     </p-card>
 </section>

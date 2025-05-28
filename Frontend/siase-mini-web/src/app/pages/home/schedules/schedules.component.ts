@@ -12,6 +12,7 @@ import { SelectModule } from 'primeng/select';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScheduleComponent } from "./schedule/schedule.component";
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-schedules',
@@ -27,7 +28,8 @@ import { ScheduleComponent } from "./schedule/schedule.component";
   styleUrl: './schedules.component.scss',
 })
 export class SchedulesComponent implements OnInit {
-  protected loading: boolean = false;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
   protected userData!: LoginResponse;
   protected userSelectedCareer!: number;
@@ -65,10 +67,15 @@ export class SchedulesComponent implements OnInit {
   }
 
   private loadSchedule(period: Period) {
+    this.loadingSubject.next(true);
+    
     return this.scheduleService.getScheduleDetail(this.userSelectedCareer, period.periodo).subscribe({
       next: (data) => {
         this.schedule = data;
         console.log(data);
+      },
+      complete: () => {
+        this.loadingSubject.next(false)
       }
     });
   }

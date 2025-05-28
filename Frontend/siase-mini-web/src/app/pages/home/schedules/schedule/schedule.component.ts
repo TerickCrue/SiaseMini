@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ScheduleComponent implements OnChanges {
 
+  @Input() loading!: boolean | null;
   @Input() schedule: WeekSchedule = {
     lunes: [],
     martes: [],
@@ -24,6 +25,7 @@ export class ScheduleComponent implements OnChanges {
 
   columns = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
   rows: any[] = [];
+
 
   constructor() {}
 

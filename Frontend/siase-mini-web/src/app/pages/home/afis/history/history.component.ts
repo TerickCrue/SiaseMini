@@ -9,6 +9,7 @@ import { AfiService } from '../../../../shared/http/afi.service';
 import { StorageService } from '../../../../shared/services/storage.service';
 import { GeneralConstant } from '../../../../shared/general-constant';
 import { AfiHistory } from '../../../../shared/dto/afi/afi-history.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -17,9 +18,15 @@ import { AfiHistory } from '../../../../shared/dto/afi/afi-history.interface';
   styleUrl: './history.component.scss'
 })
 export class HistoryComponent implements OnInit {
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
   private selectedCareer!: number;
-  protected afiHistory!: AfiHistory;
+  protected afiHistory: AfiHistory = {
+    completadas: 0,
+    total: 0,
+    afis: []
+  };
 
   constructor(
     private afiService: AfiService,
@@ -34,12 +41,14 @@ export class HistoryComponent implements OnInit {
   }
 
   private loadAfisHistory(){
+    this.loadingSubject.next(true);
+
     this.afiService.getAfisHistory(this.selectedCareer).subscribe({
       next: (data) => {
         this.afiHistory = data;
       },
       complete: () => {
-        console.log(this.afiHistory);
+        this.loadingSubject.next(false);
       }
     })
   }

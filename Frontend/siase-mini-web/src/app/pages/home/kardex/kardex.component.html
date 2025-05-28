@@ -4,7 +4,7 @@
       <h2 style="font-family: var(--font-display);">Kardex</h2>
     </ng-template>
     <div id="kardex">
-      <p-table [value]="kardex.materias" [tableStyle]="{ 'min-width': '60rem' }">
+      <p-table [loading]="loading$ | async" [value]="kardex.materias" [tableStyle]="{ 'min-width': '60rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>Semestre</th>

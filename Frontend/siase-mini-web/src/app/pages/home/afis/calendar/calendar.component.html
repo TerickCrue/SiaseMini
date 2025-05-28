@@ -21,6 +21,7 @@
       </div>
     </ng-template>
     <p-table
+      [loading]="loading$ | async"
       [value]="afis"
       [paginator]="true"
       [rows]="10"

@@ -4,6 +4,7 @@
       <h2 style="font-family: var(--font-display);">Mis AFIs</h2>
     </ng-template>
     <p-table
+      [loading]="loading$ | async"
       [value]="afiHistory.afis"
       [paginator]="true"
       [rows]="5"

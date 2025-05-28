@@ -1,4 +1,8 @@
-<p-table [value]="rows" [tableStyle]="{ 'min-width': '60rem' }">
+<p-table
+  [loading]="loading"
+  [value]="rows" 
+  [tableStyle]="{ 'min-width': '60rem' }"
+>
   <ng-template pTemplate="header">
     <tr>
       <th style="width: 15rem">Horario</th>
