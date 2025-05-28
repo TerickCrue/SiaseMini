@@ -11,6 +11,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { StorageService } from '../../../shared/services/storage.service';
 import { LoginResponse } from '../../../shared/dto/login/login-response.interface';
 import { GeneralConstant } from '../../../shared/general-constant';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import { GeneralConstant } from '../../../shared/general-constant';
     ReactiveFormsModule,
     InputTextModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    ImageModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

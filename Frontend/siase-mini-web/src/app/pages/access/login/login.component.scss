@@ -1,62 +1,94 @@
-.main-container{
-    width: 100vw;
-    height: 100vh;
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: var(--neutral-100);
+
+  #left {
+    height: 100%;
+    width: 50%;
+
+    #logo{
+      width: 100%;
+      height: 100%;
+      background-image: url('/siasemini-logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;      
+    }
+  }
+
+  #right {
+    flex-grow: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--neutral-100);
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
 
-    #form-container{
+    #form-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+     
+
+      form {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        max-width: 400px;
 
-        form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+        .form-field {
+          margin-bottom: 1.5rem;
 
-            .form-field {
-                margin-bottom: 1.5rem;
-
-                label {
-                    display: block;
-                    margin-bottom: 0.5rem;
-                    font-weight: 500;
-                    color: #333;
-                }
-            }
-
-            .form-actions {
-                display: flex;
-                justify-content: center;
-                margin-top: 2rem;
-            }
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+          }
         }
+
+        .form-actions {
+          display: flex;
+          justify-content: center;
+          margin-top: 2rem;
+        }
+      }
     }
 
-    #message-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 64px;
+    #message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-        h2, h3{
-            font-family: var(--font-display);
-            text-align: center;
-        }
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        text-align: center;
+      }
 
-        h2{
-            font-size: 48px;
-        }
+      h2 {
+        font-size: 48px;
+      }
 
-        h3{
-            font-size: 24px;
-        }
+      h3 {
+        font-size: 24px;
+      }
     }
+  }
+}
+
+@media (max-width: 1920px) {
+  .main-container{
+    #left {
+      display: none;
+    }
+  }
+
 }

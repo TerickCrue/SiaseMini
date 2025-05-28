@@ -1,22 +1,46 @@
 <div class="main-container">
+  <div id="left">
+    <div id="logo">
+    </div>
+  </div>
+  <div id="right">
     <section id="message-container">
-        <h2>Bienvenido a SIASE Mini</h2>
-        <h3>Solamente con las funciones que más utilizas a diario</h3>
+      <h2>Bienvenido a SIASE Mini</h2>
+      <h3>Solamente con las funciones que más utilizas a diario</h3>
     </section>
     <section id="form-container">
-        <form [formGroup]="loginForm" (ngSubmit)="enviarFormulario()">
-            <div class="form-field">
-                <label for="user">Matrícula</label>
-                <input placeholder="ingresa tu matrícula" id="user" type="text" pInputText formControlName="user" fluid/>
-            </div>
-            
-            <div class="form-field">
-                <label for="password">Contraseña</label>
-                <p-password placeholder="ingresa tu contraseña" id="password" formControlName="password" [toggleMask]="true" [feedback]="false" fluid/>
-            </div>
-            <div class="form-actions">
-                <p-button type="submit" label="Iniciar Sesión" [disabled]="!loginForm.valid || isLoading || btnSubmit"></p-button>
-            </div>
-        </form>
+      <form [formGroup]="loginForm" (ngSubmit)="enviarFormulario()">
+        <div class="form-field">
+          <label for="user">Matrícula</label>
+          <input
+            placeholder="ingresa tu matrícula"
+            id="user"
+            type="text"
+            pInputText
+            formControlName="user"
+            fluid
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="password">Contraseña</label>
+          <p-password
+            placeholder="ingresa tu contraseña"
+            id="password"
+            formControlName="password"
+            [toggleMask]="true"
+            [feedback]="false"
+            fluid
+          />
+        </div>
+        <div class="form-actions">
+          <p-button
+            type="submit"
+            label="Iniciar Sesión"
+            [disabled]="!loginForm.valid || isLoading || btnSubmit"
+          ></p-button>
+        </div>
+      </form>
     </section>
+  </div>
 </div>
